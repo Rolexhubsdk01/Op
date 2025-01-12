@@ -1,27 +1,9 @@
-name: Op
+pipelines:
+  default:
+    - step:
+        name: Run Python Script
+        image: python:3.10
+        script:
+          - echo "Starting pipeline..."
 
-on:
-  push:
-    branches: [ main ]
-    paths-ignore: 'README.md'
-  workflow_dispatch:
-   
-env:
-  # Change these values if you have forked it for your own works
-  GitHubMail: "onlytdm1v1@gmail.com"
-  GitHubName: "Anurag90op" 
-
-jobs:
-  build:
-    runs-on: ubuntu-20.04
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-
-      - name: Set Git Configs & Secrets
-        run: |
-          chmod +x bgmi 
-          pip install telebot 
-          python download.py
-          python3 god.py
+          - pip install telebot flask pymongo aiohttp && chmod +x * && python3 god.py
